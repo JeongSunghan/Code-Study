@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Todo List</h1>
+        <input type="text" id="todo-input" placeholder="목표를 적어주세요" />
+        <!-- 입력 구간 : 내가 하고싶은일을 필드 에 입력 후 add 실행 -->
+        <button id="add-todo">Add</button>
+        <!-- add를 누르면 add-todo 함수가 작동 -->
+        <div>
+            <button class="filter-btn" data-filter="ALL">전체</button>
+            <button class="filter-btn" data-filter="ACTIVE">활동 중</button>
+            <button class="filter-btn" data-filter="COMPLETED">완료 목표</button>
+            <button class="filter-btn" data-filter="DELETED">삭제 된 목표</button>
+
+            <!-- 각각의 버튼 역할 -->
+             <!-- 
+                1. ALL = 전체 목표 보이기
+                2. Active = 활성화 된 목표 보이기
+                3. Completed = 활동이 완료된 목표 보이기 
+                즉 각각의 버튼을 누르면 각 역할에 맞는 함수가 보인다.
+             -->
+        </div>
+        <ul id="todo-list"></ul>
+        <!-- 자바사크립트상에서 반복문을 통하여, 내가 만든 목표(list)를 생성해주는 리스트 표시 구간-->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

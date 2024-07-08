@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#todo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.todo-item.completed {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.filter-btn {
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
