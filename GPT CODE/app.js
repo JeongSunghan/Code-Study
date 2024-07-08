@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             todos = todos.map(todo => 
                 // todos를 map으로 변환
                 todo.id === id ? { ...todo, completed: !todo.completed } : todo
-                // todo상서의 id의 상태가 completed를 누른게 참이면 todos 리스트 상에서 제외 거짓일 경우 그대로 리스트에 표시
+                // todo상에서의 id의 상태가 completed를 누른게 참이면 todos 리스트 상에서 제외 거짓일 경우 그대로 리스트에 표시
             );
             renderTodos();
             // Todos 화면을 렌더링 한다.
@@ -47,31 +47,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     filterButtons.forEach(button => {
-        // 필터 버튼
+        // filterButtons변수상에서의 button을 요소를 찾으면서 순회
         button.addEventListener('click', () => {
+            // button에서 click이라는 이벤트가 발생하면        
             filter = button.dataset.filter;
+            // filter = 버튼 상에 표시되어있는 data목록으로 필터처리
             renderTodos();
+            // 필터처리가된 투두리스트를 화면에 렌더링 한다.
         });
     });
 
-    function renderTodos() {
+    // 투두리스트 렌더링 함수
+    function renderTodos() {        
         const filteredTodos = todos.filter(todo => {
+            // filteedTodos변수는 todos라는 배열로부터 필처를 처리한다.
             if (filter === 'ACTIVE') return !todo.completed;
+            // 만약 필터가 acitive, 즉 활동중인 상태면, 완료가 안된 화면으로 값을 반환
             if (filter === 'COMPLETED') return todo.completed;
+            // 만약 필터가 completed, 즉 활동이 완료된 상태면, 완료가된 화면으로 값을 반환
             return true;
+            // 그 후 함수에 true를 반환        
         });
 
         todoList.innerHTML = '';
+        // todolist에서 콘텐츠를 빈 문장열로 불러온다.    
         filteredTodos.forEach(todo => {
+            // filteredTodos를 순회하여 todo에서
             const li = document.createElement('li');
+            // li라는 변수는 = HTML상에서 li요소를 생성
             li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+            // li의 변수 이름은 투두리스트 아이템이고, 아이템의 활동 상태가 완료가 된 상태이면, 완료 상태로, 아니라면 빈값으로
             li.innerHTML = `
                 <span>${todo.content}</span>
                 <button class="toggle-todo" data-id="${todo.id}">
                     ${todo.completed ? 'Undo' : 'Complete'}
                 </button>
             `;
+            // li의 콘텐츠는 todo에서 내가 입력한 값을 span 태그로 만들고, button의 상태가 토글이 가능한걸로 만들며
+            // todo상태가 완료된 것에 따른 참 거짓 으로 버튼에 보여지는 내용을 변경
+
             todoList.appendChild(li);
+            // appendChild = 개념 숙지 할것
+            
         });
     }
 });
